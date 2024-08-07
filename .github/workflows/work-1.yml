@@ -21,6 +21,7 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
           cache: 'gradle'
+      
       - name: application-secret.yml 생성
         run: |
           cat <<EOF > src/main/resources/application-secret.yml
@@ -98,6 +99,7 @@ jobs:
             ghcr.io/${{ env.OWNER_LC }}/market-1:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
   deploy:
     name: 도커 배포
     needs: [tag, docker]
